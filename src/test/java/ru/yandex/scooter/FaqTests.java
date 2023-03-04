@@ -1,5 +1,5 @@
-import config.AppConfig;
-import config.WebDriverConfig;
+package ru.yandex.scooter;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
@@ -8,13 +8,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.yandex.scooter.pages.MainScooterPage;
+import ru.yandex.scooter.config.AppConfig;
 
 import static org.junit.Assert.assertEquals;
-
-import PageObjects.MainScooterPage;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
-import java.time.Duration;
 
 @RunWith(Parameterized.class)
 public class FaqTests {
@@ -50,7 +47,7 @@ public class FaqTests {
         mainPage.acceptOfCookie();
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Проверка соответствия текста ответа на вопрос. Тестовые данные: {0} {1}")
     public static Object[][] getTextAnswers() {
         return new Object[][]{
                 {0, "Сутки — 400 рублей. Оплата курьеру — наличными или картой."},
@@ -65,7 +62,7 @@ public class FaqTests {
     }
 
     @Test
-    public void FaqTextAnswersTest() {
+    public void faqTextAnswersTest() {
         MainScooterPage mainPage = new MainScooterPage(driver);
         mainPage.scrollToFaq();
         String actualAnswer = mainPage.getTextAnswer(numOfQuestion);

@@ -1,4 +1,4 @@
-package PageObjects;
+package ru.yandex.scooter.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -45,7 +45,7 @@ public class MainScooterPage {
     }
 
     //Открытие формы оформления заказа кнопкой из хедера
-    public void ButtonToOrderPage(int numOfOrderButton) {
+    public void buttonToOrderPage(int numOfOrderButton) {
         if (!driver.findElements(orderButton).get(numOfOrderButton).isDisplayed()) {
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElements(orderButton).get(numOfOrderButton));
         }

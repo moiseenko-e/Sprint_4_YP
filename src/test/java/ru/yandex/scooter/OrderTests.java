@@ -1,4 +1,6 @@
-import config.AppConfig;
+package ru.yandex.scooter;
+
+import ru.yandex.scooter.config.AppConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
@@ -7,9 +9,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import PageObjects.MainScooterPage;
-import PageObjects.OrderFormPage;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.yandex.scooter.pages.MainScooterPage;
+import ru.yandex.scooter.pages.OrderFormPage;
 
 @RunWith(Parameterized.class)
 public class OrderTests {
@@ -75,7 +76,7 @@ public class OrderTests {
     @Test
     public void orderTest() {
         MainScooterPage mainPage = new MainScooterPage(driver);
-        mainPage.ButtonToOrderPage(numOfOrderButton);
+        mainPage.buttonToOrderPage(numOfOrderButton);
 
         OrderFormPage orderPage = new OrderFormPage(driver);
         orderPage.waitForLoadingOrderPage();
